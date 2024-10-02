@@ -6,10 +6,10 @@ import startSecondBackground from '../../shared/assets/oponent-start.jpg';
 const ModeList = () => {
   return (
     <div className={styles.list}>
-      <GameModeCard path={'/go-first'} background={startFirstBackground}>
+      <GameModeCard path={'/game/first'} background={startFirstBackground}>
         Start first
       </GameModeCard>
-      <GameModeCard path={'/go-second'} background={startSecondBackground}>
+      <GameModeCard path={'/game/second'} background={startSecondBackground}>
         Start second
       </GameModeCard>
       <GameModeCard path={'/sandbox'}>Sandbox</GameModeCard>
