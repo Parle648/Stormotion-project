@@ -1,20 +1,15 @@
-import GameModeCard from "../entities/GameModeCard/GameModeCard";
+import GameRules from '../entities/GameRules/GameRules';
+import ModeList from '../widgets/ModeList/ModeList';
+import WelcomeTitle from '../widgets/WelcomeWidget/WelcomeWidget';
 
 const Main = () => {
-    return (
-        <div>
-            Main page
-            <GameModeCard>
-                Go first
-            </GameModeCard>
-            <GameModeCard>
-                Go second
-            </GameModeCard>
-            <GameModeCard>
-                SandBox
-            </GameModeCard>
-        </div>
-    );
+  return (
+    <div>
+      <WelcomeTitle />
+      <ModeList />
+      <GameRules />
+    </div>
+  );
 };
 
 export default Main;
