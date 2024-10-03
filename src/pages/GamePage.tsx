@@ -7,6 +7,7 @@ import stateStore from '../app/stateStore';
 import { setPile } from '../features/slices/pile-slice';
 import { unsetIsBotTake } from '../features/slices/is-bot-take';
 import { setOponentMatchsticks } from '../features/slices/oponent-matchsticks';
+import WinModal from '../features/WinModal/WinModal';
 
 const GamePage = () => {
   const pile = useSelector((store: any) => store.pile.value);
@@ -21,8 +22,6 @@ const GamePage = () => {
 
   useEffect(() => {
     if (tostart === 'second' && pile === 25) {
-      console.log('second');
-
       stateStore.dispatch(setOponentMatchsticks(1));
       stateStore.dispatch(setPile(pile - 1));
       stateStore.dispatch(unsetIsBotTake());
@@ -36,6 +35,10 @@ const GamePage = () => {
         stateStore.dispatch(setPile(pile - takeUpTo));
         stateStore.dispatch(unsetIsBotTake());
 
+        return;
+      }
+
+      if (pile === 0) {
         return;
       }
 
@@ -67,6 +70,7 @@ const GamePage = () => {
 
   return (
     <div className="game-page">
+      <WinModal />
       <MatchSticks
         count={oponentMatchsticks}
         title={`Oponent have ${oponentMatchsticks} matchsticks`}
