@@ -1,7 +1,19 @@
 .list {
-  width: 1300px;
+  width: 92vw;
   margin: 0px auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+@media (max-width: 800px) {
+  .list {
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 450px) {
+  .list {
+    justify-content: center;
+  }
 }
