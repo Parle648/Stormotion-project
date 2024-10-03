@@ -42,10 +42,20 @@ const GamePage = () => {
         return;
       }
 
+      if (pile <= takeUpTo) {
+        stateStore.dispatch(setOponentMatchsticks(pile - 1));
+        stateStore.dispatch(setPile(pile - (pile - 1)));
+        stateStore.dispatch(unsetIsBotTake());
+
+        return;
+      }
+
       if (pile === 1) {
         stateStore.dispatch(setOponentMatchsticks(1));
         stateStore.dispatch(setPile(pile - 1));
         stateStore.dispatch(unsetIsBotTake());
+
+        return;
       }
 
       for (let i = 1; i <= takeUpTo; i++) {
