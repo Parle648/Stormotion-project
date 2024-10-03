@@ -5,4 +5,10 @@
   .stick {
     height: 140px;
   }
+
+  @media (max-width: 800px) {
+    .stick {
+      height: 100px;
+    }
+  }
 }
