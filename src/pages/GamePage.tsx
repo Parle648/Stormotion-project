@@ -66,11 +66,14 @@ const GamePage = () => {
   }, [pile]);
 
   return (
-    <div>
-      <MatchSticks count={oponentMatchsticks} />
-      <MatchSticks count={currentPile} />
+    <div className="game-page">
+      <MatchSticks
+        count={oponentMatchsticks}
+        title={`Oponent have ${oponentMatchsticks} matchsticks`}
+      />
+      <MatchSticks count={currentPile} title={`Pile contains ${pile} matchsticks`} />
       <UserActions />
-      <MatchSticks count={userMatchsticks} />
+      <MatchSticks count={userMatchsticks} title={`Your have ${userMatchsticks} matchsticks`} />
     </div>
   );
 };
