@@ -15,9 +15,11 @@ const UserActions = () => {
     if (!isBotTake) {
       const matchsticks: string | undefined = event.currentTarget.value;
       stateStore.dispatch(setPile(pile - +matchsticks));
+      stateStore.dispatch(setUserMatchsticks(+matchsticks));
+
+      if (pile - +matchsticks === 0) return;
 
       stateStore.dispatch(setIsBotTake());
-      stateStore.dispatch(setUserMatchsticks(+matchsticks));
     }
   };
 
@@ -25,9 +27,10 @@ const UserActions = () => {
     <div className={styles.buttonList}>
       {userBtnIndexes.map((index) => {
         return (
-          <>
+          <div key={`userActionBtn${index}`}>
             {pile >= index + 1 && (
               <button
+                key={index}
                 className={styles.btn}
                 value={index + 1}
                 onClick={(event) => getMatchsticks(event)}
@@ -36,7 +39,7 @@ const UserActions = () => {
                 +{index + 1} Matchstick
               </button>
             )}
-          </>
+          </div>
         );
       })}
     </div>

@@ -1,11 +1,12 @@
 import { useSelector } from 'react-redux';
 import styles from './styles/winModal.module.scss';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import stateStore from '../../app/stateStore';
 import { resetOponentMatchsticks } from '../slices/oponent-matchsticks';
 import { setPile } from '../slices/pile-slice';
 import { resetUserMatchsticks } from '../slices/player-matchsticks';
 import { useRef } from 'react';
+import { setIsBotTake } from '../slices/is-bot-take';
 
 const WinModal = () => {
   const pile = useSelector((store: any) => store.pile.value);
@@ -13,10 +14,16 @@ const WinModal = () => {
   let currentPile = useRef(pile);
   const navigate = useNavigate();
 
+  const { tostart } = useParams();
+
   const resetGame = (isGohome?: string) => {
+    stateStore.dispatch(setPile(+currentPile.current));
     stateStore.dispatch(resetUserMatchsticks());
     stateStore.dispatch(resetOponentMatchsticks());
-    stateStore.dispatch(setPile(+currentPile.current));
+
+    if (tostart === 'second') {
+      stateStore.dispatch(setIsBotTake());
+    }
 
     if (isGohome) {
       stateStore.dispatch(setPile(25));
