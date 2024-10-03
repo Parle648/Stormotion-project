@@ -22,4 +22,37 @@
     font-style: italic;
     letter-spacing: 0.1rem;
   }
+
+  @media (max-width: 768px) {
+    .welcomeTitle {
+      font-size: 3rem;
+    }
+
+    .welcomeSubtitle {
+      font-size: 1.2rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .welcomeTitle {
+      font-size: 2rem;
+    }
+
+    .welcomeSubtitle {
+      font-size: 1rem;
+      margin-top: 0.5rem;
+      letter-spacing: 0.05rem;
+    }
+  }
+
+  @media (max-width: 320px) {
+    .welcomeTitle {
+      font-size: 1.5rem;
+    }
+
+    .welcomeSubtitle {
+      font-size: 0.9rem;
+      margin-top: 0.4rem;
+    }
+  }
 }
