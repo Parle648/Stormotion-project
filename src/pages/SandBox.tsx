@@ -1,5 +1,11 @@
+import SandboxForm from '../features/SandboxForm/SandboxForm';
+
 const SandBox = () => {
-  return <div>SandBox</div>;
+  return (
+    <>
+      <SandboxForm />
+    </>
+  );
 };
 
 export default SandBox;
