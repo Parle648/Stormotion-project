@@ -1,0 +1,14 @@
+.pileList {
+  width: fit-content;
+  margin: 0px auto;
+
+  .stick {
+    height: 140px;
+  }
+
+  @media (max-width: 800px) {
+    .stick {
+      height: 100px;
+    }
+  }
+}
