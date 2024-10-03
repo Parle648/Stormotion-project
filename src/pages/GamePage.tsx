@@ -20,44 +20,44 @@ const GamePage = () => {
   const { tostart } = useParams();
 
   useEffect(() => {
-    if (tostart === 'first' && pile !== 25) {
-      if (isBotTake) {
-        if (pile === takeUpTo + 1) {
-          stateStore.dispatch(setOponentMatchsticks(takeUpTo));
-          stateStore.dispatch(setPile(pile - takeUpTo));
+    if (tostart === 'second' && pile === 25) {
+      console.log('second');
+
+      stateStore.dispatch(setOponentMatchsticks(1));
+      stateStore.dispatch(setPile(pile - 1));
+      stateStore.dispatch(unsetIsBotTake());
+
+      return;
+    }
+
+    if (isBotTake) {
+      if (pile === takeUpTo + 1) {
+        stateStore.dispatch(setOponentMatchsticks(takeUpTo));
+        stateStore.dispatch(setPile(pile - takeUpTo));
+        stateStore.dispatch(unsetIsBotTake());
+
+        return;
+      }
+
+      if (pile === 1) {
+        stateStore.dispatch(setOponentMatchsticks(1));
+        stateStore.dispatch(setPile(pile - 1));
+        stateStore.dispatch(unsetIsBotTake());
+      }
+
+      for (let i = 1; i <= takeUpTo; i++) {
+        if ((pile - i) % (1 + takeUpTo) === 0) {
+          stateStore.dispatch(setOponentMatchsticks(i));
+          stateStore.dispatch(setPile(pile - i));
           stateStore.dispatch(unsetIsBotTake());
 
           return;
         }
-
-        if (pile === 1) {
-          stateStore.dispatch(setOponentMatchsticks(1));
-          stateStore.dispatch(setPile(pile - 1));
-          stateStore.dispatch(unsetIsBotTake());
-        }
-
-        for (let i = 1; i <= takeUpTo; i++) {
-          if ((pile - i) % (1 + takeUpTo) === 0) {
-            stateStore.dispatch(setOponentMatchsticks(i));
-            stateStore.dispatch(setPile(pile - i));
-            stateStore.dispatch(unsetIsBotTake());
-
-            return;
-          }
-        }
-
-        stateStore.dispatch(setOponentMatchsticks(takeUpTo));
-        stateStore.dispatch(setPile(pile - takeUpTo));
-        stateStore.dispatch(unsetIsBotTake());
       }
-    }
 
-    if (tostart === 'second' && pile === 25) {
-      console.log('second');
-
-      // todo bot logic when user goes second
-
-      // todo at the end bot set false
+      stateStore.dispatch(setOponentMatchsticks(takeUpTo));
+      stateStore.dispatch(setPile(pile - takeUpTo));
+      stateStore.dispatch(unsetIsBotTake());
     }
   }, [isBotTake]);
 
