@@ -13,7 +13,7 @@ const userMatchsticks = createSlice({
   initialState,
   reducers: {
     setUserMatchsticks(state, action: PayloadAction<number>) {
-      state.value = action.payload;
+      state.value += action.payload;
     },
     resetUserMatchsticks(state) {
       state.value = 0;
