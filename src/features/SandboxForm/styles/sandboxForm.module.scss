@@ -84,9 +84,12 @@
     }
   }
 
-  // Responsive Design
   @media (max-width: 768px) {
     padding: 1.5rem;
+
+    .formTitle {
+      font-size: 12px;
+    }
 
     h3 {
       font-size: 1.1rem;
@@ -120,5 +123,12 @@
       padding: 0.5rem 1rem;
       font-size: 0.9rem;
     }
+  }
+}
+
+@media (max-width: 768px) {
+  .formTitle {
+    width: 100%;
+    font-size: 16px;
   }
 }
