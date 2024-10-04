@@ -7,6 +7,7 @@ import { setPile } from '../slices/pile-slice';
 import { resetUserMatchsticks } from '../slices/player-matchsticks';
 import { useRef } from 'react';
 import { setIsBotTake } from '../slices/is-bot-take';
+import { setTakeUpTo } from '../slices/take-up-to';
 
 const WinModal = () => {
   const pile = useSelector((store: any) => store.pile.value);
@@ -20,6 +21,7 @@ const WinModal = () => {
     stateStore.dispatch(setPile(+currentPile.current));
     stateStore.dispatch(resetUserMatchsticks());
     stateStore.dispatch(resetOponentMatchsticks());
+    stateStore.dispatch(setTakeUpTo(3))
 
     if (tostart === 'second') {
       stateStore.dispatch(setIsBotTake());
