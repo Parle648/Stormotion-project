@@ -3,6 +3,7 @@ import styles from './styles/gameRules.module.scss';
 
 const GameRules = () => {
   const [isOpen, toggleOpen] = useToggle(false);
+
   return (
     <>
       <span

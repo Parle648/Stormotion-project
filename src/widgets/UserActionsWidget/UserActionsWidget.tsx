@@ -1,9 +1,6 @@
 import { useSelector } from 'react-redux';
-import stateStore from '../../app/stateStore';
-import { setPile } from '../../features/slices/pile-slice';
 import styles from './styles/userActions.module.scss';
-import { setIsBotTake } from '../../features/slices/is-bot-take';
-import { setUserMatchsticks } from '../../features/slices/player-matchsticks';
+import { handleUserMove } from '../../features/state-helpers/handlePlayerMove';
 
 const UserActions = () => {
   const pile = useSelector((store: any) => store.pile.value);
@@ -14,12 +11,7 @@ const UserActions = () => {
   const getMatchsticks = (event: React.MouseEvent<HTMLButtonElement>) => {
     if (!isBotTake) {
       const matchsticks: string | undefined = event.currentTarget.value;
-      stateStore.dispatch(setPile(pile - +matchsticks));
-      stateStore.dispatch(setUserMatchsticks(+matchsticks));
-
-      if (pile - +matchsticks === 0) return;
-
-      stateStore.dispatch(setIsBotTake());
+      handleUserMove(+matchsticks, pile);
     }
   };
 
