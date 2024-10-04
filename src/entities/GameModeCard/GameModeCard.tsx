@@ -1,16 +1,14 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './styles/gameModeCard.module.scss';
 
-const GameModeCard = ({
-  children,
-  path,
-  background,
-}: {
+interface IGameModeCard {
   children: React.ReactNode;
   path: string;
   background?: string;
-}) => {
+}
+
+const GameModeCard: FC<IGameModeCard> = ({ children, path, background }) => {
   return (
     <Link className={styles.card} to={path}>
       <h2 className={styles.title}>{children}</h2>

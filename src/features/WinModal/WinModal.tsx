@@ -36,7 +36,7 @@ const WinModal = () => {
       {pile === 0 && (
         <div className={styles.modalBlock}>
           <div className={styles.modlaWindow}>
-            {userMatchsticks % 2 === 0 ? 'You win' : 'opponent win'}
+            {userMatchsticks % 2 === 0 ? 'You win' : 'Oponent win'}
             <div className={styles.btnsBlock}>
               <button onClick={() => resetGame('/')}>Go home</button>
               <button onClick={() => resetGame()}>Again</button>
