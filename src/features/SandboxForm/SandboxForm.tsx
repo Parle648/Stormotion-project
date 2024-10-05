@@ -1,34 +1,19 @@
 import { useForm } from 'react-hook-form';
 import styles from './styles/sandboxForm.module.scss';
-import stateStore from '../../app/stateStore';
-import { resetOponentMatchsticks } from '../slices/oponent-matchsticks';
-import { resetUserMatchsticks } from '../slices/player-matchsticks';
-import { setPile } from '../slices/pile-slice';
-import { setTakeUpTo } from '../slices/take-up-to';
 import { useNavigate } from 'react-router-dom';
-import { setIsBotTake } from '../slices/is-bot-take';
-
-interface ISandBox {
-  tostart: 'first' | 'second';
-  takeUpTo: number;
-  pile: number;
-}
+import { setCustomSettings } from './helpers/setCustomSettings';
+import { ISandBox } from './types/IFormData';
 
 const SandboxForm = () => {
   const { register, handleSubmit } = useForm<ISandBox>();
   const navigate = useNavigate();
 
   const setGameSetings = (data: ISandBox) => {
-    stateStore.dispatch(resetOponentMatchsticks());
-    stateStore.dispatch(resetUserMatchsticks());
-    stateStore.dispatch(setPile(2 * +data.pile + 1));
-    stateStore.dispatch(setTakeUpTo(+data.takeUpTo));
-
-    if (data.tostart === 'second') {
-      stateStore.dispatch(setIsBotTake());
+    if (data.takeUpTo > (data.pile*2 + 1) / 2) {
+      alert('m should be less than 2n + 1');
+      return;
     }
-
-    navigate(`/game/${data.tostart}`);
+    setCustomSettings(data, navigate)
   };
 
   return (
